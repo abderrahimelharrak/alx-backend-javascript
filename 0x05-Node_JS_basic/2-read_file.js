@@ -1,17 +1,18 @@
-const fils = require('fils');
+const fs = require('fs');
 
 /**
- * Reading a file synchronously with Node JS.
+ * Counts the students in a CSV data file.
  * @param {String} dataPath The path to the CSV data file.
+ * @author Bezaleel Olakunori <https://github.com/B3zaleel>
  */
 const countStudents = (dataPath) => {
-  if (!fils.existsSync(dataPath)) {
+  if (!fs.existsSync(dataPath)) {
     throw new Error('Cannot load the database');
   }
-  if (!fils.statSync(dataPath).isFile()) {
+  if (!fs.statSync(dataPath).isFile()) {
     throw new Error('Cannot load the database');
   }
-  const fileLines = fils
+  const fileLines = fs
     .readFileSync(dataPath, 'utf-8')
     .toString('utf-8')
     .trim()
